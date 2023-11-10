@@ -1,24 +1,21 @@
 package org.test.animals;
 
-public class Sheep implements Animal {
-    private final String vetID;
-    private final String ID;
-
+public class Sheep extends Livestock implements Animal {
     public Sheep(String vetID, String ID) {
-        this.vetID = vetID;
-        this.ID = ID;
+        super(vetID, ID);
     }
 
-    public String getVetID() {
-        return vetID;
-    }
-
-    public String getID() {
-        return ID;
-    }
 
     @Override
     public String makeASound() {
         return "Beeee";
+    }
+
+    @Override
+    public String toString() {
+        return "Sheep{" +
+                "vetID='" + super.getVetID() + '\'' +
+                ", ID='" + super.getID() + '\'' +
+                '}';
     }
 }
