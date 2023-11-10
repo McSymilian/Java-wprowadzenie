@@ -1,6 +1,6 @@
 package org.test.animals;
 
-public abstract class Livestock {
+public abstract class Livestock implements Animal {
     private final String vetID;
     private final String ID;
 

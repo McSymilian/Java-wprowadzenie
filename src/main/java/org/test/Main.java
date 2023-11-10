@@ -4,7 +4,9 @@ import org.test.animals.Animal;
 import org.test.animals.Cow;
 import org.test.animals.Pig;
 import org.test.animals.Sheep;
+import org.test.archive.ArchiveParser;
 
+import java.io.File;
 import java.util.*;
 
 /**
@@ -15,12 +17,12 @@ import java.util.*;
 public class Main {
     public static final List<Animal> animals = new ArrayList<>();
     public static void main(String[] args) {
-        animals.add(new Cow("0008", "0008"));
-        animals.add(new Sheep("0000", "0000"));
-        animals.add(new Cow("0010", "0009"));
-        animals.add(new Sheep("0001", "0001"));
-        animals.add(new Pig("0003", "0003", 10.4));
-        animals.add(new Pig("0005", "0005", 30.8));
+        try {
+            var aparser = new ArchiveParser();
+            animals.addAll(aparser.parse(new File("src/main/resources/LivestockDB.txt")));
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
 
         animals.sort((a , b) -> {
             if (a instanceof Sheep && b instanceof Cow)

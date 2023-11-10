@@ -1,6 +1,6 @@
 package org.test.animals;
 
-public class Cow extends Livestock implements Animal {
+public class Cow extends Livestock{
     public Cow(String vetID, String ID) {
         super(vetID, ID);
     }
