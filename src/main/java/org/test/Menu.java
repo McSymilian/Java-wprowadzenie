@@ -80,11 +80,16 @@ public class Menu {
                         do {
                             System.out.println("write vetID");
                             int userVetID = sc.nextInt();
-                            temporary = animals.stream().map((a) -> (Livestock) a).filter(a -> "a".equals(a.getVetID())).findFirst().orElse(null);
+                            temporary = animals.stream()
+                                    .map((a) -> (Livestock) a)
+                                    .filter(a -> "a".equals(a.getVetID()))
+                                    .findFirst()
+                                    .orElse(null);
                         } while  (temporary != null);
-
+                        animals.remove(temporary);
                 }
             };
+            //TODO case 2 usuniecie  ID, Usunięcie indexu
             default -> () -> {};
         };
     }
