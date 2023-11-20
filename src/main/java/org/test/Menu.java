@@ -1,10 +1,9 @@
 package org.test;
 
-import org.test.animals.Animal;
-import org.test.animals.Cow;
-import org.test.animals.Pig;
-import org.test.animals.Sheep;
+import org.test.animals.*;
 
+import java.sql.SQLOutput;
+import java.util.Objects;
 import java.util.Scanner;
 
 import static org.test.Main.animals;
@@ -24,14 +23,13 @@ public class Menu {
     public void setNextAction() {
         nextAction = sc.nextInt();
     }
+    private static final MenuAction showAllAction =()-> {
+        for (Animal animal : animals) {
+            System.out.println(animal);}
+    };
     public MenuAction getMenuAction() {
         return switch (nextAction) {
-            case 1 -> () -> {
-                for (Animal animal : animals) {
-                    System.out.println(animal);
-
-                }
-            };
+            case 1 -> showAllAction;
             case 2-> () -> {
                 for (Animal animal: animals) {
                     if (animal instanceof Sheep sheep) {
@@ -71,8 +69,21 @@ public class Menu {
                         System.out.println("set mass of Pig");
                         animals.add(new Pig(String.valueOf(vetID), String.valueOf(animalID), sc.nextDouble()));
                 }
+            };
+            case 6->()-> {
+                showAllAction.doAction();
+                System.out.println("chose \"vetID\" -> 1, \"ID\" -> 2, \"index\" -> 3.");
+                int userChose = sc.nextInt();
+                switch (userChose){
+                    case 1:
+                        Livestock temporary;
+                        do {
+                            System.out.println("write vetID");
+                            int userVetID = sc.nextInt();
+                            temporary = animals.stream().map((a) -> (Livestock) a).filter(a -> "a".equals(a.getVetID())).findFirst().orElse(null);
+                        } while  (temporary != null);
 
-
+                }
             };
             default -> () -> {};
         };
