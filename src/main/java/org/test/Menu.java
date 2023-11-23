@@ -75,7 +75,6 @@ public class Menu {
                 System.out.println("chose \"vetID\" -> 1, \"ID\" -> 2, \"index\" -> 3.");
                 int userChose = sc.nextInt();
                 switch (userChose){
-
                     case 1:
                         Livestock temporary;
                         do {
