@@ -75,6 +75,7 @@ public class Menu {
                 System.out.println("chose \"vetID\" -> 1, \"ID\" -> 2, \"index\" -> 3.");
                 int userChose = sc.nextInt();
                 switch (userChose){
+
                     case 1:
                         Livestock temporary;
                         do {
@@ -87,9 +88,27 @@ public class Menu {
                                     .orElse(null);
                         } while  (temporary != null);
                         animals.remove(temporary);
+
+                        //TODO case 2 usuniecie  ID, Usunięcie indexu
+
+                    case 2:
+                        do {
+                            System.out.println("write ID");
+                            int userID = sc.nextInt();
+                            temporary = animals.stream()
+                                    .map((a) -> (Livestock) a)
+                                    .filter(a -> "a".equals(a.getID()))
+                                    .findFirst()
+                                    .orElse(null);
+                        } while  (temporary != null);
+                        animals.remove(temporary);
+                    case 3:
+                        System.out.println("write index number");
+                        int userIndex = sc.nextInt();
+                        animals.remove(userIndex);
                 }
             };
-            //TODO case 2 usuniecie  ID, Usunięcie indexu
+
             default -> () -> {};
         };
     }
