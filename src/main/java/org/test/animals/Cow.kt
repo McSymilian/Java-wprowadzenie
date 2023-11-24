@@ -1,17 +1,27 @@
-package org.test.animals;
+package org.test.animals
 
-public class Cow extends Livestock{
-    public Cow(String vetID, String ID) {
-        super(vetID, ID);
-    }
+/**
+ * słowo kluczowe var (zmienna) i val (stała) określa pole klasy, w przeciwnym wypadku wartość zostaje "zapomniana" po stworzeniu obiektu
+ */
+class Cow(vetID: String?, ID: String?) : Livestock(vetID, ID) {
 
+    /**
     @Override
     public String makeASound() {
-        return "Mooo";
+        return "Muu";
+    }
+     */
+    /**
+     * zamiast  adnotacji @Override słowo kluczowe "override"
+     * fun (zabawa, function) określenie sitnienia funkcji
+     * : Typ -> określenie zwracanego typu
+     */
+    override fun makeASound(): String {
+        return "Mooo"
     }
 
-    @Override
-    public String toString() {
-        return super.toString();
+    override fun toString(): String {
+        return super.toString()
     }
 }
+

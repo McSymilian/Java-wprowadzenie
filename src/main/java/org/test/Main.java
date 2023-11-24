@@ -6,6 +6,7 @@ import org.test.animals.Pig;
 import org.test.animals.Sheep;
 import org.test.archive.ArchiveParser;
 
+import javax.swing.*;
 import java.io.File;
 import java.util.*;
 
@@ -34,9 +35,16 @@ public class Main {
         });
 
         Menu menu = new Menu();
-        menu.showMenu();
-        menu.setNextAction();
-        menu.getMenuAction().doAction();
+        while (true) {
+            menu.showMenu();
+            menu.setNextAction();
+            if (menu.getMenuAction() == Menu.endProgram) {
+                break;
+            }
+            menu.getMenuAction().doAction();
+        }
+
+        JFrame okno = new JFrame("");
 
 
     }
