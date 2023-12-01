@@ -21,6 +21,7 @@ public class Main {
             var aparser = new ArchiveParser();
             animals.addAll(aparser.parse(new File("src/main/resources/LivestockDB.txt")));
         } catch (NullPointerException e) {
+            animals.add(new Cow("001", "01"));
             e.printStackTrace();
         }
 
