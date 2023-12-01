@@ -7,6 +7,7 @@ import org.test.animals.Sheep;
 import org.test.archive.ArchiveParser;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.*;
 
 /**
@@ -19,10 +20,12 @@ public class Main {
     public static void main(String[] args) {
         try {
             var aparser = new ArchiveParser();
-            animals.addAll(aparser.parse(new File("src/main/resources/LivestockDB.txt")));
+            animals.addAll(aparser.parse(new File("src/main/resources/Livestock.txt")));
         } catch (NullPointerException e) {
             animals.add(new Cow("001", "01"));
             e.printStackTrace();
+        } catch (RuntimeException ex) {
+            animals.add(new Cow("001", "01"));
         }
 
         animals.sort((a , b) -> {

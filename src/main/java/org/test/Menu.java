@@ -1,7 +1,9 @@
 package org.test;
 
 import org.test.animals.*;
+import org.test.archive.ArchiveWriter;
 
+import java.io.File;
 import java.sql.SQLOutput;
 import java.util.Objects;
 import java.util.Scanner;
@@ -17,6 +19,7 @@ public class Menu {
         System.out.println("4.Wyświetl wszystkie świnie");
         System.out.println("5.Dodaj zwierzę");
         System.out.println("6.Usuń zwierzę");
+        System.out.println("7.Zapisz");
 
     }
     private static final Scanner sc = new Scanner(System.in);
@@ -107,7 +110,10 @@ public class Menu {
                         animals.remove(userIndex);
                 }
             };
+            case 7 -> () -> {
+                ArchiveWriter.write(animals.stream().map(a -> (Livestock) a).toList(), new File("LivestockDB.txt"));
 
+            };
             default -> () -> {};
         };
     }
