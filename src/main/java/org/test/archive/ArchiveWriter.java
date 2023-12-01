@@ -3,6 +3,7 @@ package org.test.archive;
 import org.test.animals.Cow;
 import org.test.animals.Livestock;
 import org.test.animals.Pig;
+import org.test.animals.Sheep;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -23,6 +24,11 @@ public class ArchiveWriter {
                             .append(pig.getVetID())
                             .append(pig.getID())
                             .append(String.valueOf(pig.getMass()))
+                            .append("\n");
+                } else if (animal instanceof Sheep sheep) {
+                    writer.append(sheep.getClass().getSimpleName())
+                            .append(sheep.getVetID())
+                            .append(sheep.getID())
                             .append("\n");
                 }
 
